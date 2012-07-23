@@ -8,4 +8,4 @@ This repository is dedicated to the Maine Journal iPad Publication.  It currentl
   * Gesture Navigation
   * Database Access
 
-Any code/files specific to a module needs to be put in the corresponding branch.  The master folder willbe used for the main framework code/files.
+Any code/files specific to a module needs to be put in the corresponding branch.  The master folder will be used for the main framework code/files.
