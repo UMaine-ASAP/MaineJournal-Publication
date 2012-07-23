@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53A55B9914075C02003CDC5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A55B9814075C02003CDC5D /* UIKit.framework */; };
+		53A55B9B14075C02003CDC5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A55B9A14075C02003CDC5D /* Foundation.framework */; };
+		53A55B9D14075C02003CDC5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A55B9C14075C02003CDC5D /* CoreGraphics.framework */; };
+		53A55BA314075C02003CDC5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53A55BA114075C02003CDC5D /* InfoPlist.strings */; };
+		53A55BA514075C02003CDC5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A55BA414075C02003CDC5D /* main.m */; };
+		53A55BA914075C02003CDC5D /* CustomMediaPlayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A55BA814075C02003CDC5D /* CustomMediaPlayerAppDelegate.m */; };
+		53A55BB014075C4D003CDC5D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A55BAF14075C4D003CDC5D /* MediaPlayer.framework */; };
+		53A55BB414075D27003CDC5D /* MainScreenVCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A55BB214075D27003CDC5D /* MainScreenVCtr.m */; };
+		53A55BB514075D27003CDC5D /* MainScreenVCtr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A55BB314075D27003CDC5D /* MainScreenVCtr.xib */; };
+		53A55BB714075D5D003CDC5D /* MainScreeniPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A55BB614075D5D003CDC5D /* MainScreeniPad.xib */; };
+		53A55BBB14075F46003CDC5D /* CustomControllsVCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A55BB914075F46003CDC5D /* CustomControllsVCtr.m */; };
+		53A55BBC14075F46003CDC5D /* CustomControllsVCtr.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53A55BBA14075F46003CDC5D /* CustomControllsVCtr.xib */; };
+		53A55BBE14075F63003CDC5D /* moviePlayer.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A55BBD14075F63003CDC5D /* moviePlayer.png */; };
+		849D0DD3155DA3FE00E030C9 /* Thomas_Leeuw_MJ.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 849D0DD2155DA3FE00E030C9 /* Thomas_Leeuw_MJ.mp4 */; };
+		849D0DD9155DB0AA00E030C9 /* CustomControllsiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849D0DD8155DB0AA00E030C9 /* CustomControllsiPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		53A55B9414075C02003CDC5D /* CustomMediaPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomMediaPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53A55B9814075C02003CDC5D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		53A55B9A14075C02003CDC5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		53A55B9C14075C02003CDC5D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		53A55BA014075C02003CDC5D /* CustomMediaPlayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CustomMediaPlayer-Info.plist"; sourceTree = "<group>"; };
+		53A55BA214075C02003CDC5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53A55BA414075C02003CDC5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		53A55BA614075C02003CDC5D /* CustomMediaPlayer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CustomMediaPlayer-Prefix.pch"; sourceTree = "<group>"; };
+		53A55BA714075C02003CDC5D /* CustomMediaPlayerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomMediaPlayerAppDelegate.h; sourceTree = "<group>"; };
+		53A55BA814075C02003CDC5D /* CustomMediaPlayerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomMediaPlayerAppDelegate.m; sourceTree = "<group>"; };
+		53A55BAF14075C4D003CDC5D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		53A55BB114075D27003CDC5D /* MainScreenVCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScreenVCtr.h; sourceTree = "<group>"; };
+		53A55BB214075D27003CDC5D /* MainScreenVCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScreenVCtr.m; sourceTree = "<group>"; };
+		53A55BB314075D27003CDC5D /* MainScreenVCtr.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenVCtr.xib; sourceTree = "<group>"; };
+		53A55BB614075D5D003CDC5D /* MainScreeniPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreeniPad.xib; sourceTree = "<group>"; };
+		53A55BB814075F46003CDC5D /* CustomControllsVCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomControllsVCtr.h; sourceTree = "<group>"; };
+		53A55BB914075F46003CDC5D /* CustomControllsVCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomControllsVCtr.m; sourceTree = "<group>"; };
+		53A55BBA14075F46003CDC5D /* CustomControllsVCtr.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomControllsVCtr.xib; sourceTree = "<group>"; };
+		53A55BBD14075F63003CDC5D /* moviePlayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moviePlayer.png; sourceTree = "<group>"; };
+		849D0DD2155DA3FE00E030C9 /* Thomas_Leeuw_MJ.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thomas_Leeuw_MJ.mp4; sourceTree = "<group>"; };
+		849D0DD8155DB0AA00E030C9 /* CustomControllsiPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomControllsiPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53A55B9114075C02003CDC5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A55BB014075C4D003CDC5D /* MediaPlayer.framework in Frameworks */,
+				53A55B9914075C02003CDC5D /* UIKit.framework in Frameworks */,
+				53A55B9B14075C02003CDC5D /* Foundation.framework in Frameworks */,
+				53A55B9D14075C02003CDC5D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		53A55B8914075C02003CDC5D = {
+			isa = PBXGroup;
+			children = (
+				849D0DD2155DA3FE00E030C9 /* Thomas_Leeuw_MJ.mp4 */,
+				53A55B9E14075C02003CDC5D /* CustomMediaPlayer */,
+				53A55B9714075C02003CDC5D /* Frameworks */,
+				53A55B9514075C02003CDC5D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		53A55B9514075C02003CDC5D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				53A55B9414075C02003CDC5D /* CustomMediaPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		53A55B9714075C02003CDC5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53A55BAF14075C4D003CDC5D /* MediaPlayer.framework */,
+				53A55B9814075C02003CDC5D /* UIKit.framework */,
+				53A55B9A14075C02003CDC5D /* Foundation.framework */,
+				53A55B9C14075C02003CDC5D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53A55B9E14075C02003CDC5D /* CustomMediaPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				53A55BA714075C02003CDC5D /* CustomMediaPlayerAppDelegate.h */,
+				53A55BA814075C02003CDC5D /* CustomMediaPlayerAppDelegate.m */,
+				53A55B9F14075C02003CDC5D /* Supporting Files */,
+				53A55BB114075D27003CDC5D /* MainScreenVCtr.h */,
+				53A55BB214075D27003CDC5D /* MainScreenVCtr.m */,
+				53A55BB314075D27003CDC5D /* MainScreenVCtr.xib */,
+				53A55BB614075D5D003CDC5D /* MainScreeniPad.xib */,
+				53A55BB814075F46003CDC5D /* CustomControllsVCtr.h */,
+				53A55BB914075F46003CDC5D /* CustomControllsVCtr.m */,
+				53A55BBA14075F46003CDC5D /* CustomControllsVCtr.xib */,
+				849D0DD8155DB0AA00E030C9 /* CustomControllsiPad.xib */,
+			);
+			path = CustomMediaPlayer;
+			sourceTree = "<group>";
+		};
+		53A55B9F14075C02003CDC5D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53A55BA014075C02003CDC5D /* CustomMediaPlayer-Info.plist */,
+				53A55BBD14075F63003CDC5D /* moviePlayer.png */,
+				53A55BA114075C02003CDC5D /* InfoPlist.strings */,
+				53A55BA414075C02003CDC5D /* main.m */,
+				53A55BA614075C02003CDC5D /* CustomMediaPlayer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		53A55B9314075C02003CDC5D /* CustomMediaPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53A55BAC14075C02003CDC5D /* Build configuration list for PBXNativeTarget "CustomMediaPlayer" */;
+			buildPhases = (
+				53A55B9014075C02003CDC5D /* Sources */,
+				53A55B9114075C02003CDC5D /* Frameworks */,
+				53A55B9214075C02003CDC5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CustomMediaPlayer;
+			productName = CustomMediaPlayer;
+			productReference = 53A55B9414075C02003CDC5D /* CustomMediaPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53A55B8B14075C02003CDC5D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = navgujarat;
+			};
+			buildConfigurationList = 53A55B8E14075C02003CDC5D /* Build configuration list for PBXProject "CustomMediaPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 53A55B8914075C02003CDC5D;
+			productRefGroup = 53A55B9514075C02003CDC5D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				53A55B9314075C02003CDC5D /* CustomMediaPlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		53A55B9214075C02003CDC5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A55BA314075C02003CDC5D /* InfoPlist.strings in Resources */,
+				53A55BB514075D27003CDC5D /* MainScreenVCtr.xib in Resources */,
+				53A55BB714075D5D003CDC5D /* MainScreeniPad.xib in Resources */,
+				53A55BBC14075F46003CDC5D /* CustomControllsVCtr.xib in Resources */,
+				53A55BBE14075F63003CDC5D /* moviePlayer.png in Resources */,
+				849D0DD3155DA3FE00E030C9 /* Thomas_Leeuw_MJ.mp4 in Resources */,
+				849D0DD9155DB0AA00E030C9 /* CustomControllsiPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53A55B9014075C02003CDC5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53A55BA514075C02003CDC5D /* main.m in Sources */,
+				53A55BA914075C02003CDC5D /* CustomMediaPlayerAppDelegate.m in Sources */,
+				53A55BB414075D27003CDC5D /* MainScreenVCtr.m in Sources */,
+				53A55BBB14075F46003CDC5D /* CustomControllsVCtr.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		53A55BA114075C02003CDC5D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53A55BA214075C02003CDC5D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		53A55BAA14075C02003CDC5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		53A55BAB14075C02003CDC5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		53A55BAD14075C02003CDC5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CustomMediaPlayer/CustomMediaPlayer-Prefix.pch";
+				INFOPLIST_FILE = "CustomMediaPlayer/CustomMediaPlayer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		53A55BAE14075C02003CDC5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CustomMediaPlayer/CustomMediaPlayer-Prefix.pch";
+				INFOPLIST_FILE = "CustomMediaPlayer/CustomMediaPlayer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53A55B8E14075C02003CDC5D /* Build configuration list for PBXProject "CustomMediaPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53A55BAA14075C02003CDC5D /* Debug */,
+				53A55BAB14075C02003CDC5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53A55BAC14075C02003CDC5D /* Build configuration list for PBXNativeTarget "CustomMediaPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53A55BAD14075C02003CDC5D /* Debug */,
+				53A55BAE14075C02003CDC5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 53A55B8B14075C02003CDC5D /* Project object */;
+}
