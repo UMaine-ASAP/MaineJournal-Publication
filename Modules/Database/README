@@ -1,0 +1,4 @@
+This folder was to created to hold the module for pulling media/articles/whatever from a database and any related files.
+
+** Update 7/30/2012 **
+First attempt at the database module.  Example works well but current version pulls from a local database, not a remote one.  This will obviously need to be changed.  Additionally, the code itself could probably be cleaned up a bit.
