@@ -1,0 +1,39 @@
+SimStream Site Components
+
+- Login System
+	- Username
+	- Password
+	- Type (Admin (us), Educator, Student, Other)
+	- Profile
+	- Contact Information (if Educator OR make it optional)
+
+- Projects
+	- Browser Scratch Player
+	- Description
+	- Author
+	- Tag (part of a group OR contextual tag)
+	- Comments
+
+- Groups
+	- Group Creator/Leader
+	- Members of Group
+	- Group Page
+		- Name of Group (Focus, Title, Context)
+		- Feeds (Recent projects, recent discussions)
+
+- Curriculum
+	- Focus
+	- Learning Objectives
+	- Prior Knowledge
+	- Scratch Activity
+
+- Discussion (Forums)
+	- Educator Forums
+	- Other Forums
+
+- Resources
+	- Scratch Website
+	- Scratch Ed
+
+
+SimStream is the first "Group" on the site.

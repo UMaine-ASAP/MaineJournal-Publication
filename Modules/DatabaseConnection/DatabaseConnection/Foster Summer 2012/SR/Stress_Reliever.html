@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      canvas {
+        border: 3px solid #9C9898;
+        margin:200px;
+        background-color: #ACABDD;
+      }
+    </style>
+    <script src="http://www.html5canvastutorials.com/libraries/kinetic-v3.10.0.js"></script>
+    <script>
+      window.onload = function() {
+        var stage = new Kinetic.Stage({
+          container: "container",
+          width: screen.width/2,
+          height: screen.height/2
+        });
+
+        var layer = new Kinetic.Layer();
+
+        // Filter Panel
+
+        var filterPanel = new Kinetic.Rect({
+          x: -screen.width*.175+15,
+          y: 0,
+          width: screen.width*.175,
+          height: screen.height/2,
+          fill: "#A0D5D6",
+          stroke: "black",
+          strokeWidth: 4,
+        });
+
+        var filterText = new Kinetic.Text({
+          x: -screen.width*.09,
+          y: 50,
+          text: "Filter Panel",
+          fontSize: 30,
+          fontFamily: "League Gothic",
+          textFill: "#105B63",
+          align: "center",
+          verticalAlign: "middle",
+          fontStyle:"bold"
+        });
+
+        var filterOne = new Kinetic.Rect({
+          x: -screen.width/2*.315,
+          y: 100,
+          width: screen.width*.15,
+          height: 35,
+          fill: "#FFFAD5",
+          stroke: "black",
+          strokeWidth: 3,
+        });
+
+        var filterTwo = new Kinetic.Rect({
+          x: -screen.width/2*.315,
+          y: 185,
+          width: screen.width*.15,
+          height: 35,
+          fill: "#FFFAD5",
+          stroke: "black",
+          strokeWidth: 3,
+        });
+
+        var filterThree = new Kinetic.Rect({
+          x: -screen.width/2*.315,
+          y: 270,
+          width: screen.width*.15,
+          height: 35,
+          fill: "#FFFAD5",
+          stroke: "black",
+          strokeWidth: 3,
+        });
+
+        // Teaser Panel
+
+        var teaserPanel = new Kinetic.Rect({
+          x: screen.width/2+4,
+          y: 0,
+          width: screen.width*.325,
+          height: screen.height/2,
+          fill: "#789AA1",
+          stroke: "black",
+          strokeWidth: 4,
+        });
+
+        var teaserGroup = new Kinetic.Group({
+        })
+
+        var rowVal = 100;
+        var c = 0;
+
+        for (var n = 0; n <=7; n++){
+          c++;
+          if (n == 3 || n == 6 || n ==9)
+          {
+            rowVal = rowVal + 150;
+            c = 1;
+          }
+
+          var i = rowVal;
+          var teaserBox = new Kinetic.Rect({
+            x: c * 250 + 1200,
+            y: i,
+            width: 200,
+            height: 100,
+            fill: "#DB9E36",
+            stroke: "black",
+            strokeWidth: 3,
+            id: n,
+          });
+x
+        teaserBox.on("mousedown", function(){
+          console.log(this.getId());
+
+          //Filter Panel Transitions
+
+          filterPanel.transitionTo({
+            x:-screen.width*.175+15,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          filterText.transitionTo({
+            x:-screen.width*.09,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          filterOne.transitionTo({
+            x:-screen.width/2*.315,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          filterTwo.transitionTo({
+            x:-screen.width/2*.315,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          filterThree.transitionTo({
+            x:-screen.width/2*.315,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+// Teaser Panel Transitions
+
+          teaserPanel.transitionTo({
+            x:screen.width/2+4,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          teaserGroup.transitionTo({
+            x: 0,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+        });
+
+          teaserGroup.add(teaserBox);
+        }
+
+        // Transition Effects
+        filterPanel.on("mousedown", function() {
+
+          //Filter Panel Transitions
+
+          filterPanel.transitionTo({
+            x:0,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          filterText.transitionTo({
+            x:screen.width*.085,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          filterOne.transitionTo({
+            x:screen.width*.01,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          filterTwo.transitionTo({
+            x:screen.width*.01,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          filterThree.transitionTo({
+            x:screen.width*.01,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          // Teaser Panel Transitions
+
+          teaserPanel.transitionTo({
+            x:screen.width*.175,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+          teaserGroup.transitionTo({
+            x:-screen.width/2.75,
+            duration: 1,
+            easing: 'ease-in'
+          })
+
+        });
+
+        // add the shape to the layer
+        layer.add(filterPanel);
+        layer.add(teaserPanel);
+        layer.add(filterOne);
+        layer.add(filterTwo);
+        layer.add(filterThree);
+        layer.add(filterText);
+        layer.add(teaserGroup);
+
+        // add the layer to the stage
+        stage.add(layer);
+      };
+
+    </script>
+  </head>
+  <body>
+    <div id="container"></div>
+  </body>
+</html>
