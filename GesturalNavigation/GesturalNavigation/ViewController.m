@@ -17,6 +17,10 @@
 @synthesize contents = _contents;
 @synthesize contentsTab = _contentsTab;
 
+// articlesLayer will hold the articleViews, contentsLayer will hold the contents (and other potential items)
+UIView *articlesLayer;
+UIView	*contentsLayer;
+
 // This BOOL monitors the status of the Contents View
 BOOL isClosed = YES;
 
@@ -51,31 +55,40 @@ int articlePos;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
+	// Initializes the articlesLayer, which will hold the articleViews
+	articlesLayer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+	[self.view addSubview:articlesLayer];
+	
 	// Initialize the articles array.  Array will eventually be filled with the Article Templates
 	for (int i=0; i < 12; i++)
 	{
 		articles[i] = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 		articles[i].backgroundColor = [self getRandomColor];
 	}
+	
 	// Adds the first Article View to the Main View.  This will eventually be decided by which article the users chooses on the main screen.
-	[self.view addSubview:articles[articlePos]];
+	[articlesLayer addSubview:articles[articlePos]];
+	
+	// Initializes the contentsLayer, which will hold the contents (and other potential items)
+	contentsLayer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+	[self.view addSubview:contentsLayer];
 	
 	// Creates two buttons that allow the user to scroll through the articles.  These will be removed
 	// once Drag Gestures are established
 	UIButton *nextArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/1.5, self.view.frame.size.height/2, 150, 50)];
 	nextArticle.backgroundColor = [self getRandomColor];
 	[nextArticle addTarget:self action:@selector(nextView) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:nextArticle];
+	[contentsLayer addSubview:nextArticle];
 	
 	UIButton *previousArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/4, self.view.frame.size.height/2, 150, 50)];
 	previousArticle.backgroundColor = [self getRandomColor];
-	[previousArticle addTarget:self action:@selector(loadURL) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:previousArticle];
+	[previousArticle addTarget:self action:@selector(previousView) forControlEvents:UIControlEventTouchUpInside];
+	[contentsLayer addSubview:previousArticle];
 	
 	// Initialize the Contents View and add it to the Main View
 	_contents = [[UIView alloc] initWithFrame:CGRectMake(xOffset, yPos, contentsWidth, contentsHeight)];
 	_contents.backgroundColor =[self getRandomColor];
-	[self.view addSubview:_contents];
+	[contentsLayer addSubview:_contents];
 	
 	int xInc = _contents.frame.size.width/3.55;
 	int yInc = 40;
@@ -87,7 +100,7 @@ int articlePos;
 		// Places the images in rows of three
 		for (int i = 0; i < 3; i++)
 			{
-				// Create the article images that will bring the user to the specified article
+				// Create the article buttons that will bring the user to the specified article
 				articleThumbs[i] = [[UIButton alloc] initWithFrame:CGRectMake((xInc * i)+40, yInc, 150, 100)];
 				articleThumbs[i].backgroundColor = [self getRandomColor];
 				// Adds the target of the specific button (i.e. the article)
@@ -107,7 +120,7 @@ int articlePos;
 	_contentsTab.font = [UIFont fontWithName:@"Myriad Pro" size:14.0];
 	_contentsTab.textAlignment = UITextAlignmentCenter;
 	_contentsTab.text = @"Contents";
-	[self.view addSubview:_contentsTab];
+	[contentsLayer addSubview:_contentsTab];
 	
 	// Enable interations
 	_contentsTab.userInteractionEnabled = YES;
@@ -118,12 +131,29 @@ int articlePos;
     [_contentsTab addGestureRecognizer:TapRecognizer];
 }
 
-// Beginning to code switching views
+// Handles view switching.  When the next/previous button is pressed, the current article is removed and the next/previous article is added
 -(void)nextView {
+	if (articlePos!=11){
+		articlePos++;
+	}
+	else{
+		articlePos = 0;
+	}
+	
+	[articlesLayer addSubview:articles[articlePos]];
+	
+	[articles[articlePos-1] removeFromSuperview];
+}
+
+-(void)previousView {
 	[articles[articlePos] removeFromSuperview];
-	articlePos++;
-	articles[articlePos].backgroundColor = [[UIColor blueColor] initWithWhite:50 alpha:.5];
-	[self.view addSubview:articles[articlePos]];
+	if(articlePos!=0){
+	articlePos--;
+	}
+	else{
+		articlePos = 11;
+	}
+	[articlesLayer addSubview:articles[articlePos]];
 }
 
 //The method that designates the target of the button.  This will be deleted/modified once the views are set up.
