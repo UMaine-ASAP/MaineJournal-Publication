@@ -5,6 +5,9 @@
 //  Created by admin on 8/3/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+//  This ViewController.m contains everything that will remain on the screen regardless of which article
+//  is being displayed.  This includes (AS OF 8/7) the ViewController itself and the Contents Dropdown
+//
 
 #import "ViewController.h"
 #import <foundation/Foundation.h>
@@ -44,12 +47,23 @@ UIButton *articles[12];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
+	
+	UIButton *nextArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width, self.view.frame.size.height/2, 150, 50)];
+	nextArticle.backgroundColor = [self getRandomColor];
+	[nextArticle addTarget:self action:@selector(loadURL) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:nextArticle];
+	
+	UIButton *previousArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/4, self.view.frame.size.height/2, 150, 50)];
+	previousArticle.backgroundColor = [self getRandomColor];
+	[previousArticle addTarget:self action:@selector(loadURL) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:previousArticle];
+	
 	// Initialize the Contents View and add it to the Main View
 	_contents = [[UIView alloc] initWithFrame:CGRectMake(xOffset, yPos, contentsWidth, contentsHeight)];
 	_contents.backgroundColor =[UIColor greenColor];
 	[self.view addSubview:_contents];
 	
-	int xInc = _contents.frame.size.width/3.25;
+	int xInc = _contents.frame.size.width/3.55;
 	int yInc = 40;
 	
 	// This for loop populates the Contents View with the article images/links.
@@ -68,7 +82,7 @@ UIButton *articles[12];
 			}
 		
 		yInc = yInc + 140;
-		xInc = _contents.frame.size.width/3.25;
+		xInc = _contents.frame.size.width/3.55;
 	}
 	
 	// Create the Contents Tab which will control opening and closing the Contents View
@@ -113,7 +127,7 @@ UIButton *articles[12];
 	
 	// Create animation block
     void (^completion)(void) = ^{
-        [UIView animateWithDuration:1.0
+        [UIView animateWithDuration:0.5
                               delay:0
                             options:UIViewAnimationCurveLinear
                          animations:^{
@@ -121,7 +135,7 @@ UIButton *articles[12];
                          }
                          completion:nil];
 		
-		[UILabel animateWithDuration:1.0
+		[UILabel animateWithDuration:0.5
 							   delay:0
 							 options:UIViewAnimationCurveLinear
 						  animations:^{
@@ -131,7 +145,7 @@ UIButton *articles[12];
 	};
 	
 	// Call existing animation with the new block
-	[UIView animateWithDuration:1.0
+	[UIView animateWithDuration:0.5
 						  delay:0
 						options:UIViewAnimationCurveLinear
 					 animations:^{
@@ -141,7 +155,7 @@ UIButton *articles[12];
 						 completion();
 					 }];
 	
-	[UILabel animateWithDuration:1.0
+	[UILabel animateWithDuration:0.5
 						  delay:0
 						options:UIViewAnimationCurveLinear
 					 animations:^{
@@ -152,6 +166,8 @@ UIButton *articles[12];
 					 }];
 }
 
+// Creates a Random Color.  Currently used to color the article buttons.
+// Will be replaced when article images are pulled from database.
 - (UIColor *) getRandomColor {
 	CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
 	CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
