@@ -23,7 +23,7 @@ int xOffset, yPos = -600;
 int contentsHeight = 600, contentsWidth = 568;
 
 // This defines the array of articles displayed in the Contents View
-UIImageView *articleImages[12];
+UIButton *articles[12];
 
 - (void)didReceiveMemoryWarning
 {
@@ -60,9 +60,11 @@ UIImageView *articleImages[12];
 		for (int i = 0; i < 3; i++)
 			{
 				// Create the article images that will bring the user to the specified article
-				articleImages[i] = [[UIImageView alloc] initWithFrame:CGRectMake((xInc * i)+40, yInc, 150, 100)];
-				articleImages[i].backgroundColor = [UIColor yellowColor];
-				[_contents addSubview:articleImages[i]];
+				articles[i] = [[UIButton alloc] initWithFrame:CGRectMake((xInc * i)+40, yInc, 150, 100)];
+				articles[i].backgroundColor = [self getRandomColor];
+				// Adds the target of the specific button (i.e. the article)
+				[articles[i] addTarget:self action:@selector(loadURL) forControlEvents:UIControlEventTouchUpInside];
+				[_contents addSubview:articles[i]];
 			}
 		
 		yInc = yInc + 140;
@@ -85,6 +87,11 @@ UIImageView *articleImages[12];
 	UITapGestureRecognizer *TapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TapDetected:)];
     TapRecognizer.numberOfTouchesRequired = 1;
     [_contentsTab addGestureRecognizer:TapRecognizer];
+}
+
+//The method that designates the target of the button.  This will be deleted/modified once the views are set up.
+-(void)loadURL {
+	 [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.google.com"]];
 }
 
 // This function is called when a user taps the Contents Tab
@@ -143,6 +150,13 @@ UIImageView *articleImages[12];
 					 completion:^(BOOL finished) {
 						 completion();
 					 }];
+}
+
+- (UIColor *) getRandomColor {
+	CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
+	CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+	CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;
+	return [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
 }
 
 - (void)viewDidUnload
