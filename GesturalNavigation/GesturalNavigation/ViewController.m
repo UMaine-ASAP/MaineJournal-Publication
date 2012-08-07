@@ -29,6 +29,9 @@ int contentsHeight = 600, contentsWidth = 568;
 UIButton *articleThumbs[12];
 UIView *articles[12];
 
+// Used to track user position in the articles array
+int articlePos;
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -48,15 +51,20 @@ UIView *articles[12];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
-	UIView *scrollView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-	scrollView.backgroundColor = [self getRandomColor];
-	[self.view addSubview:scrollView];
+	// Initialize the articles array.  Array will eventually be filled with the Article Templates
+	for (int i=0; i < 12; i++)
+	{
+		articles[i] = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+		articles[i].backgroundColor = [self getRandomColor];
+	}
+	// Adds the first Article View to the Main View.  This will eventually be decided by which article the users chooses on the main screen.
+	[self.view addSubview:articles[articlePos]];
 	
 	// Creates two buttons that allow the user to scroll through the articles.  These will be removed
 	// once Drag Gestures are established
 	UIButton *nextArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/1.5, self.view.frame.size.height/2, 150, 50)];
 	nextArticle.backgroundColor = [self getRandomColor];
-	[nextArticle addTarget:self action:@selector(loadURL) forControlEvents:UIControlEventTouchUpInside];
+	[nextArticle addTarget:self action:@selector(nextView) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:nextArticle];
 	
 	UIButton *previousArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/4, self.view.frame.size.height/2, 150, 50)];
@@ -103,11 +111,19 @@ UIView *articles[12];
 	
 	// Enable interations
 	_contentsTab.userInteractionEnabled = YES;
-	
+	 
 	// Create a Tap Recognizer (should probably be made into a Swipe) and add it to the Contents Tab
 	UITapGestureRecognizer *TapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TapDetected:)];
     TapRecognizer.numberOfTouchesRequired = 1;
     [_contentsTab addGestureRecognizer:TapRecognizer];
+}
+
+// Beginning to code switching views
+-(void)nextView {
+	[articles[articlePos] removeFromSuperview];
+	articlePos++;
+	articles[articlePos].backgroundColor = [[UIColor blueColor] initWithWhite:50 alpha:.5];
+	[self.view addSubview:articles[articlePos]];
 }
 
 //The method that designates the target of the button.  This will be deleted/modified once the views are set up.
