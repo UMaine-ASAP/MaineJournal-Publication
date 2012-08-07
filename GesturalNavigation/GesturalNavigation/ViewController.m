@@ -26,7 +26,8 @@ int xOffset, yPos = -600;
 int contentsHeight = 600, contentsWidth = 568;
 
 // This defines the array of articles displayed in the Contents View
-UIButton *articles[12];
+UIButton *articleThumbs[12];
+UIView *articles[12];
 
 - (void)didReceiveMemoryWarning
 {
@@ -47,8 +48,13 @@ UIButton *articles[12];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
+	UIView *scrollView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+	scrollView.backgroundColor = [self getRandomColor];
+	[self.view addSubview:scrollView];
 	
-	UIButton *nextArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width, self.view.frame.size.height/2, 150, 50)];
+	// Creates two buttons that allow the user to scroll through the articles.  These will be removed
+	// once Drag Gestures are established
+	UIButton *nextArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/1.5, self.view.frame.size.height/2, 150, 50)];
 	nextArticle.backgroundColor = [self getRandomColor];
 	[nextArticle addTarget:self action:@selector(loadURL) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:nextArticle];
@@ -60,7 +66,7 @@ UIButton *articles[12];
 	
 	// Initialize the Contents View and add it to the Main View
 	_contents = [[UIView alloc] initWithFrame:CGRectMake(xOffset, yPos, contentsWidth, contentsHeight)];
-	_contents.backgroundColor =[UIColor greenColor];
+	_contents.backgroundColor =[self getRandomColor];
 	[self.view addSubview:_contents];
 	
 	int xInc = _contents.frame.size.width/3.55;
@@ -74,21 +80,22 @@ UIButton *articles[12];
 		for (int i = 0; i < 3; i++)
 			{
 				// Create the article images that will bring the user to the specified article
-				articles[i] = [[UIButton alloc] initWithFrame:CGRectMake((xInc * i)+40, yInc, 150, 100)];
-				articles[i].backgroundColor = [self getRandomColor];
+				articleThumbs[i] = [[UIButton alloc] initWithFrame:CGRectMake((xInc * i)+40, yInc, 150, 100)];
+				articleThumbs[i].backgroundColor = [self getRandomColor];
 				// Adds the target of the specific button (i.e. the article)
-				[articles[i] addTarget:self action:@selector(loadURL) forControlEvents:UIControlEventTouchUpInside];
-				[_contents addSubview:articles[i]];
+				[articleThumbs[i] addTarget:self action:@selector(loadURL) forControlEvents:UIControlEventTouchUpInside];
+				[_contents addSubview:articleThumbs[i]];
 			}
 		
+		// Establish x and y increment values
 		yInc = yInc + 140;
 		xInc = _contents.frame.size.width/3.55;
 	}
 	
 	// Create the Contents Tab which will control opening and closing the Contents View
 	_contentsTab = [[UILabel alloc] initWithFrame:CGRectMake(xOffset, yPos+600, 100, 50)];
-	_contentsTab.backgroundColor = [UIColor blueColor];
-	_contentsTab.textColor = [UIColor whiteColor];
+	_contentsTab.backgroundColor = [self getRandomColor];
+	_contentsTab.textColor = [self getRandomColor];
 	_contentsTab.font = [UIFont fontWithName:@"Myriad Pro" size:14.0];
 	_contentsTab.textAlignment = UITextAlignmentCenter;
 	_contentsTab.text = @"Contents";
