@@ -18,7 +18,8 @@
     
     // setups up the positions
     touchPos = CGPointMake(0.0, 0.0);
-    center = CGPointMake( 384, 350);
+    center = CGPointMake( 384, 502);
+    WidthHeight = CGPointMake(768,1004);
     [super viewDidLoad];
     
     // makes an array out of the images
@@ -42,11 +43,13 @@
     [subtitles addObject:[NSString stringWithFormat:@"An Eye"]];
     [subtitles addObject:[NSString stringWithFormat:@"Many Perspectives On Many Differnt Things"]];
     [subtitles addObject:[NSString stringWithFormat:@"Some Water, a Worm Thing, and a Giant I Guess"]];
+    descriptiion.text = [subtitles objectAtIndex:0];
+    descriptiion.center = CGPointMake(center.x, 777);
     
     // makes and setsup the large display
     image = [gallery objectAtIndex:0];
     main = [[largeDisplay alloc]init];
-    [main instantiate:image :center :[subtitles objectAtIndex:0]];
+    [main instantiate:image :center :WidthHeight];
     [main drawOnScreen:self.view];
     
     // makes and setsup the sub display
@@ -68,6 +71,7 @@
         [holder drawSmall:self.view];
         if ([holder inBox:touchPos.x :touchPos.y]){
             [main changeImage:[holder getPicture]];
+            descriptiion.text = [subtitles objectAtIndex:i];
             [holder drawBig:self.view];
         }
     }

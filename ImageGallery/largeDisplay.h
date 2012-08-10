@@ -13,9 +13,9 @@
     IBOutlet UIImageView *main;
     UIImage *picture;
     CGPoint Center;
-    UILabel *description;
+    CGPoint widthHeight;
 }
-- (void) instantiate:(UIImage *)pic:(CGPoint)center:(NSString *)str;
+- (void) instantiate:(UIImage *)pic:(CGPoint)center:(CGPoint)WidthHeight;
 - (void) drawOnScreen:(UIView *)view;
 - (void) changeImage:(UIImage *)pic;
 

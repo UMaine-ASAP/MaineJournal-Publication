@@ -19,11 +19,13 @@
     NSMutableArray *subtitles;
     
     CGPoint center;
+    CGPoint WidthHeight;
     CGPoint touchPos;
     
     UIImage *image;
     
     IBOutlet UIImageView *large;
+    IBOutlet UILabel *descriptiion;
     
     
     picGroup *images;

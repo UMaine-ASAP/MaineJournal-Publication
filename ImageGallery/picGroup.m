@@ -25,10 +25,10 @@
 - (void) drawOnView:(UIView *)view{
     for (int i=0; i<gallerySub.count; i++){
         int x = 244+(70*i);
-        int y = 700;
+        int y = 820;
         if (i >= (gallerySub.count/2)){
             x = 244+(70*(i-(gallerySub.count/2)));
-            y = 770;
+            y = 890;
         }
         [[gallerySub objectAtIndex:i] drawInView:view:x:y];
     }

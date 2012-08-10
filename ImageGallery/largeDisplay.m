@@ -11,30 +11,39 @@
 @implementation largeDisplay
 
 // makes and setups the class
-- (void) instantiate:(UIImage *)pic:(CGPoint)center:(NSString *)str{
+- (void) instantiate:(UIImage *)pic:(CGPoint)center:(CGPoint)WidthHeight{
     picture = pic;
     Center = center;
+    widthHeight = WidthHeight;
     // makes the main picture
     main = [[UIImageView alloc]init];
-    main.frame = CGRectMake( Center.x-((pic.size.width/5)/2), Center.y-((pic.size.height/5)/2), pic.size.width/5, pic.size.height/5);
+    if (pic.size.width>pic.size.height){
+        float ratio = (widthHeight.x/pic.size.width);
+        main.frame = CGRectMake( Center.x-(widthHeight.x/2), Center.y-((pic.size.height*ratio)/2)-150, widthHeight.x,pic.size.height*ratio);
+    }
+    else {
+        float ratio = ((widthHeight.y-200)/pic.size.height);
+        main.frame = CGRectMake( Center.x-((pic.size.width*ratio)/2), Center.y-((widthHeight.y-200)/2)-150, pic.size.width*ratio, widthHeight.y-200);
+    }
     [main setImage:pic];
-    // makes it's label
-    description = [[UILabel alloc] initWithFrame:CGRectMake(center.x, center.y, 200, 50)];
-    description.text = str;
-    description.textColor = [UIColor whiteColor];
-    
 }
 
 // draws the display on the screem
 - (void) drawOnScreen:(UIView *)view{
     [view addSubview:main];
-    [view addSubview:description];
 }
 
 // changes the image displayed
 - (void) changeImage:(UIImage *)pic{
     picture = pic;
-    main.frame = CGRectMake( Center.x-((pic.size.width/5)/2), Center.y-((pic.size.height/5)/2), pic.size.width/5, pic.size.height/5);
+    if (pic.size.width>pic.size.height){
+        float ratio = (widthHeight.x/pic.size.width);
+        main.frame = CGRectMake( Center.x-(widthHeight.x/2), Center.y-((pic.size.height*ratio)/2)-150, widthHeight.x,pic.size.height*ratio);
+    }
+    else {
+        float ratio = ((widthHeight.y-200)/pic.size.height);
+        main.frame = CGRectMake( Center.x-((pic.size.width*ratio)/2), Center.y-((widthHeight.y-200)/2)-150, pic.size.width*ratio, widthHeight.y-200);
+    }
     [main setImage:pic];
 }
 @end
