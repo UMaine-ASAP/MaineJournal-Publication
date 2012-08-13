@@ -58,6 +58,12 @@ int articlePos;
 	// Initializes the articlesLayer, which will hold the articleViews
 	articlesLayer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 	[self.view addSubview:articlesLayer];
+
+	// Initialize the forward and back gestures that are used to navigate through articles 
+	UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self  action:@selector(previousView)];
+	swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+	UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(nextView)];
+	swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
 	
 	// Initialize the articles array.  Array will eventually be filled with the Article Templates
 	for (int i=0; i < 12; i++)
@@ -73,22 +79,12 @@ int articlePos;
 	contentsLayer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 	[self.view addSubview:contentsLayer];
 	
-	// Creates two buttons that allow the user to scroll through the articles.  These will be removed
-	// once Drag Gestures are established
-	UIButton *nextArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/1.5, self.view.frame.size.height/2, 150, 50)];
-	nextArticle.backgroundColor = [self getRandomColor];
-	[nextArticle addTarget:self action:@selector(nextView) forControlEvents:UIControlEventTouchUpInside];
-	[contentsLayer addSubview:nextArticle];
-	
-	UIButton *previousArticle = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/4, self.view.frame.size.height/2, 150, 50)];
-	previousArticle.backgroundColor = [self getRandomColor];
-	[previousArticle addTarget:self action:@selector(previousView) forControlEvents:UIControlEventTouchUpInside];
-	[contentsLayer addSubview:previousArticle];
-	
 	// Initialize the Contents View and add it to the Main View
 	_contents = [[UIView alloc] initWithFrame:CGRectMake(xOffset, yPos, contentsWidth, contentsHeight)];
 	_contents.backgroundColor =[self getRandomColor];
 	[contentsLayer addSubview:_contents];
+	[contentsLayer addGestureRecognizer:swipeRight];
+	[contentsLayer addGestureRecognizer:swipeLeft];
 	
 	int xInc = _contents.frame.size.width/3.55;
 	int yInc = 40;
