@@ -14,12 +14,17 @@
 
 @implementation ViewController
 
+// The container for the article buttons and the tab that opens/closes the Contents
 @synthesize contents = _contents;
 @synthesize contentsTab = _contentsTab;
 
 // articlesLayer will hold the articleViews, contentsLayer will hold the contents (and other potential items)
-UIView *articlesLayer;
-UIView	*contentsLayer;
+@synthesize articlesLayer = articlesLayer;
+@synthesize contentsLayer = contentsLayer;
+
+// This defines the array of articles displayed in the Contents View
+UIButton *articleThumbs[12];
+UIView *articles[12];
 
 // This BOOL monitors the status of the Contents View
 BOOL isClosed = YES;
@@ -28,10 +33,6 @@ BOOL isClosed = YES;
 int xOffset, yPos = -600;
 // These values define the height and width of the Contents View
 int contentsHeight = 600, contentsWidth = 568;
-
-// This defines the array of articles displayed in the Contents View
-UIButton *articleThumbs[12];
-UIView *articles[12];
 
 // Used to track user position in the articles array
 int articlePos;
@@ -77,14 +78,14 @@ int articlePos;
 	
 	// Initializes the contentsLayer, which will hold the contents (and other potential items)
 	contentsLayer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+	[contentsLayer addGestureRecognizer:swipeRight];
+	[contentsLayer addGestureRecognizer:swipeLeft];
 	[self.view addSubview:contentsLayer];
 	
 	// Initialize the Contents View and add it to the Main View
 	_contents = [[UIView alloc] initWithFrame:CGRectMake(xOffset, yPos, contentsWidth, contentsHeight)];
 	_contents.backgroundColor =[self getRandomColor];
-	[contentsLayer addSubview:_contents];
-	[contentsLayer addGestureRecognizer:swipeRight];
-	[contentsLayer addGestureRecognizer:swipeLeft];
+	[self.view addSubview:_contents];
 	
 	int xInc = _contents.frame.size.width/3.55;
 	int yInc = 40;
@@ -118,7 +119,7 @@ int articlePos;
 	_contentsTab.text = @"Contents";
 	[contentsLayer addSubview:_contentsTab];
 	
-	// Enable interations
+	// Enable interactions
 	_contentsTab.userInteractionEnabled = YES;
 	 
 	// Create a Tap Recognizer (should probably be made into a Swipe) and add it to the Contents Tab

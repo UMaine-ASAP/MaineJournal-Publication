@@ -11,9 +11,13 @@
 @interface ViewController : UIViewController {
 	UIView *contents;
 	UILabel *contentsTab;
+	UIView *articlesLayer;
+	UIView	*contentsLayer;
 }
 
 @property (nonatomic, retain) UIView *contents;
 @property (nonatomic, retain) UILabel *contentsTab;
+@property (nonatomic, retain) UIView *articlesLayer;
+@property (nonatomic, retain) UIView *contentsLayer;
 
 @end
