@@ -139,11 +139,48 @@ int articlePos;
 	
 	[articlesLayer addSubview:articles[articlePos]];
 	
-	[articles[articlePos-1] removeFromSuperview];
+	// Create animation block
+    void (^completion)(void) = ^{
+        [UIView animateWithDuration:0.5
+                              delay:0
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             articles[articlePos-1].frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+                         }
+                         completion:nil];
+		
+		[UIView animateWithDuration:0.5
+                              delay:0
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             articles[articlePos].frame = CGRectMake(0+self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+                         }
+                         completion:nil];
+	};
+	
+	// Call existing animation with the new block
+	[UIView animateWithDuration:0.5
+						  delay:0
+						options:UIViewAnimationCurveLinear
+					 animations:^{
+						 articles[articlePos-1].frame = CGRectMake(0-self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+					 }
+					 completion:^(BOOL finished) {
+						 completion();
+					 }];
+	
+	[UIView animateWithDuration:0.5
+						  delay:0
+						options:UIViewAnimationCurveLinear
+					 animations:^{
+						 articles[articlePos].frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+					 }
+					 completion:^(BOOL finished) {
+						 completion();
+					 }];
 }
 
 -(void)previousView {
-	[articles[articlePos] removeFromSuperview];
 	if(articlePos!=0){
 	articlePos--;
 	}
@@ -151,6 +188,46 @@ int articlePos;
 		articlePos = 11;
 	}
 	[articlesLayer addSubview:articles[articlePos]];
+	
+	// Create animation block
+    void (^completion)(void) = ^{
+        [UIView animateWithDuration:0.5
+                              delay:0
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             articles[articlePos-1].frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+                         }
+                         completion:nil];
+		
+		[UIView animateWithDuration:0.5
+                              delay:0
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             articles[articlePos].frame = CGRectMake(0+self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+                         }
+                         completion:nil];
+	};
+	
+	// Call existing animation with the new block
+	[UIView animateWithDuration:0.5
+						  delay:0
+						options:UIViewAnimationCurveLinear
+					 animations:^{
+						 articles[articlePos-1].frame = CGRectMake(0-self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+					 }
+					 completion:^(BOOL finished) {
+						 completion();
+					 }];
+	
+	[UIView animateWithDuration:0.5
+						  delay:0
+						options:UIViewAnimationCurveLinear
+					 animations:^{
+						 articles[articlePos].frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+					 }
+					 completion:^(BOOL finished) {
+						 completion();
+					 }];
 }
 
 //The method that designates the target of the button.  This will be deleted/modified once the views are set up.
@@ -171,17 +248,13 @@ int articlePos;
 		isClosed = YES;
 	}
 	
-	// Set the start frame of the animation
-	CGRect startFrame = CGRectMake(xOffset, yPos, contentsWidth, contentsHeight);
-	CGRect tabFrame = CGRectMake(xOffset, yPos+600, 100, 50);
-	
 	// Create animation block
     void (^completion)(void) = ^{
         [UIView animateWithDuration:0.5
                               delay:0
                             options:UIViewAnimationCurveLinear
                          animations:^{
-                             _contents.frame = startFrame;
+                             _contents.frame = CGRectMake(xOffset, yPos, contentsWidth, contentsHeight);
                          }
                          completion:nil];
 		
@@ -189,7 +262,7 @@ int articlePos;
 							   delay:0
 							 options:UIViewAnimationCurveLinear
 						  animations:^{
-							  _contentsTab.frame=tabFrame;
+							  _contentsTab.frame=CGRectMake(xOffset, yPos+600, 100, 50);
 						  }
 						  completion:nil];
 	};
@@ -227,7 +300,7 @@ int articlePos;
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
+    [super viewDidUnload]; 
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
