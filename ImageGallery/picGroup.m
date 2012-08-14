@@ -12,7 +12,13 @@
 @implementation picGroup
 
 // makes and setups the class
-- (void) instantiate:(NSMutableArray *)pictures{
+- (void) instantiate:(NSMutableArray *)pictures:(CGPoint)WidthHeight{
+    widthHeight = WidthHeight;
+    
+    // these varibles can be changed really easily to adjust the way the page is setup
+    NumAcross = 3;
+    picSize = 60;
+    
     gallerySub = [[NSMutableArray alloc]init];
     for (int i=0; i<pictures.count; i++) {
         subImage *temp = [[subImage alloc]init];
@@ -23,14 +29,26 @@
 
 // draws each of the images in the subview
 - (void) drawOnView:(UIView *)view{
-    for (int i=0; i<gallerySub.count; i++){
-        int x = 244+(70*i);
-        int y = 820;
-        if (i >= (gallerySub.count/2)){
-            x = 244+(70*(i-(gallerySub.count/2)));
-            y = 890;
+    int temp = 0;
+    double rows = ceil(((double)gallerySub.count)/((double)NumAcross));
+    for (int a=0; a<rows; a++){
+        int imagesLeft = gallerySub.count-temp;
+        if (imagesLeft<NumAcross){
+            for (int i=0; i<imagesLeft; i++){
+                int x = ((widthHeight.x/2)-((picSize*1.25*NumAcross)/2))+(picSize*1.25*i);
+                int y = widthHeight.y+(picSize*1.25*(a+1));
+                [[gallerySub objectAtIndex:temp] drawInView:view:x:y:picSize];
+                temp += 1;
+            }
         }
-        [[gallerySub objectAtIndex:i] drawInView:view:x:y];
+        else {
+            for (int i=0; i<NumAcross; i++){
+                int x = ((widthHeight.x/2)-((picSize*1.25*NumAcross)/2))+(picSize*1.25*i);
+                int y = widthHeight.y+(picSize*1.25*(a+1));
+                [[gallerySub objectAtIndex:temp] drawInView:view:x:y:picSize];
+                temp += 1;
+            }
+        }
     }
 }
 

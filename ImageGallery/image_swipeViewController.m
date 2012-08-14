@@ -18,9 +18,15 @@
     
     // setups up the positions
     touchPos = CGPointMake(0.0, 0.0);
-    center = CGPointMake( 384, 502);
-    WidthHeight = CGPointMake(768,1004);
+    WidthHeight = CGPointMake(768,680);
     [super viewDidLoad];
+    
+    /*if ((self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)){
+        center = CGPointMake( 1000, 384);
+        WidthHeight = CGPointMake( 1004, 768);
+        [main SetForRotate:center :WidthHeight];
+        [main drawOnScreen:self.view];
+    }*/
     
     // makes an array out of the images
     gallery = [[NSMutableArray alloc]init];
@@ -41,20 +47,20 @@
     [subtitles addObject:[NSString stringWithFormat:@"I Have no Idea"]];
     [subtitles addObject:[NSString stringWithFormat:@"Planet Undergoing Construction"]];
     [subtitles addObject:[NSString stringWithFormat:@"An Eye"]];
-    [subtitles addObject:[NSString stringWithFormat:@"Many Perspectives On Many Differnt Things"]];
+    [subtitles addObject:[NSString stringWithFormat:@"Many Perspectives On Many Different Things"]];
     [subtitles addObject:[NSString stringWithFormat:@"Some Water, a Worm Thing, and a Giant I Guess"]];
     descriptiion.text = [subtitles objectAtIndex:0];
-    descriptiion.center = CGPointMake(center.x, 777);
+    descriptiion.center = CGPointMake((WidthHeight.x/2), WidthHeight.y+27);
     
     // makes and setsup the large display
     image = [gallery objectAtIndex:0];
     main = [[largeDisplay alloc]init];
-    [main instantiate:image :center :WidthHeight];
+    [main instantiate:image :WidthHeight];
     [main drawOnScreen:self.view];
     
     // makes and setsup the sub display
     images = [[picGroup alloc]init];
-    [images instantiate:gallery];
+    [images instantiate:gallery:WidthHeight];
     [images drawOnView:self.view];
     
     
@@ -75,6 +81,12 @@
             [holder drawBig:self.view];
         }
     }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    WidthHeight = CGPointMake(768,1004);
+    [main SetForRotate:WidthHeight];
+    [main drawOnScreen:self.view];
 }
 
 - (void)viewDidUnload

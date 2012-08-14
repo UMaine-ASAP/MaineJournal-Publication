@@ -16,12 +16,12 @@
 }
 
 // draws the indvidual image
-- (void) drawInView:(UIView *)view:(int)xx:(int)yy{
+- (void) drawInView:(UIView *)view:(int)xx:(int)yy:(int)PicSize{
     
     x = xx;
     y = yy;
-    width = 50;
-    height = 50;
+    width = PicSize;
+    height = PicSize;
     picture = [[UIImageView alloc]init];
     picture.frame = CGRectMake(x,y,width,height);
     [picture setImage:pic];
@@ -47,15 +47,11 @@
 
 // makes the image bigger
 - (void) drawBig:(UIView *)view{
-    width = 60;
-    height = 60;
-    picture.frame = CGRectMake(x-5,y-5,width,height);
+    picture.frame = CGRectMake(x-(((width*1.2)-width)/2),y-(((height*1.2)-height)/2),width*1.2,height*1.2);
 }
 
 // makes te image smaller
 - (void) drawSmall:(UIView *)view{
-    width = 50;
-    height = 50;
     picture.frame = CGRectMake(x,y,width,height);
 }
 

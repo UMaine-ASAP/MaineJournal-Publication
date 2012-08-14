@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48B920A815DAABEC000129A0 /* imageMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B920A715DAABEC000129A0 /* imageMover.m */; };
 		48BB27D515BF08AC00D9155F /* candle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48BB27CD15BF08AC00D9155F /* candle.jpg */; };
 		48BB27D615BF08AC00D9155F /* heads.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48BB27CE15BF08AC00D9155F /* heads.jpg */; };
 		48BB27D715BF08AC00D9155F /* mirror.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 48BB27CF15BF08AC00D9155F /* mirror.jpg */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48B920A615DAABEC000129A0 /* imageMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageMover.h; sourceTree = "<group>"; };
+		48B920A715DAABEC000129A0 /* imageMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imageMover.m; sourceTree = "<group>"; };
 		48BB27CD15BF08AC00D9155F /* candle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = candle.jpg; sourceTree = "<group>"; };
 		48BB27CE15BF08AC00D9155F /* heads.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = heads.jpg; sourceTree = "<group>"; };
 		48BB27CF15BF08AC00D9155F /* mirror.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mirror.jpg; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 			children = (
 				48E83F2415BEF1AC00A521BF /* largeDisplay.h */,
 				48E83F2515BEF1AC00A521BF /* largeDisplay.m */,
+				48B920A615DAABEC000129A0 /* imageMover.h */,
+				48B920A715DAABEC000129A0 /* imageMover.m */,
 			);
 			name = "Large Display";
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				48E83F2615BEF1AC00A521BF /* largeDisplay.m in Sources */,
 				48E83F2915BEF1C800A521BF /* picGroup.m in Sources */,
 				48E83F2C15BEF1DF00A521BF /* subImage.m in Sources */,
+				48B920A815DAABEC000129A0 /* imageMover.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +329,7 @@
 				GCC_PREFIX_HEADER = "ImageGallery/ImageGallery-Prefix.pch";
 				INFOPLIST_FILE = "ImageGallery/ImageGallery-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -335,6 +342,7 @@
 				GCC_PREFIX_HEADER = "ImageGallery/ImageGallery-Prefix.pch";
 				INFOPLIST_FILE = "ImageGallery/ImageGallery-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

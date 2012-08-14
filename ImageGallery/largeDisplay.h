@@ -7,16 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "imageMover.h"
 
 @interface largeDisplay : NSObject
 {
     IBOutlet UIImageView *main;
     UIImage *picture;
-    CGPoint Center;
     CGPoint widthHeight;
+    imageMover *shaper;
 }
-- (void) instantiate:(UIImage *)pic:(CGPoint)center:(CGPoint)WidthHeight;
+- (void) instantiate:(UIImage *)pic:(CGPoint)WidthHeight;
 - (void) drawOnScreen:(UIView *)view;
 - (void) changeImage:(UIImage *)pic;
+- (void) SetForRotate:(CGPoint)WidthHeight;
 
 @end

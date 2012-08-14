@@ -11,8 +11,11 @@
 @interface picGroup : NSObject
 {
     NSMutableArray *gallerySub;
+    int NumAcross;
+    CGPoint widthHeight;
+    int picSize;
 }
-- (void) instantiate:(NSMutableArray *)pictures;
+- (void) instantiate:(NSMutableArray *)pictures:(CGPoint)WidthHeight;
 - (void) drawOnView:(UIView *)view;
 - (NSMutableArray *) getArray;
 @end

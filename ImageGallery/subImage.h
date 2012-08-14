@@ -19,7 +19,7 @@
     int height;
 }
 - (void) instantiate:(UIImage *)pictemp;
-- (void) drawInView:(UIView *)view:(int)xx:(int)yy;
+- (void) drawInView:(UIView *)view:(int)xx:(int)yy:(int)PicSize;
 - (Boolean) inBox:(int)xx:(int)yy;
 - (UIImage *) getPicture;
 - (void) drawBig:(UIView *)view;

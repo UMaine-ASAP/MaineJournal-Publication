@@ -18,7 +18,6 @@
     NSMutableArray *ImageViews;
     NSMutableArray *subtitles;
     
-    CGPoint center;
     CGPoint WidthHeight;
     CGPoint touchPos;
     
