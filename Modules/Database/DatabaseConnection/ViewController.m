@@ -35,7 +35,7 @@
 	//Grabs the data in the table
 	self.employees = [employeeList getEmployees];
 	
-	// Populates each view on the app (one image and two labels in this case)
+	// Populate initial view on the app (one image and two labels in this case)
 	[self.imageView setImage:((EmployeeList *) [self.employees objectAtIndex:0]).image];
 	[self.employeeName setText:((EmployeeList *) [self.employees objectAtIndex:0]).employeeName];
 	[self.employeePosition setText:((EmployeeList *) [self.employees objectAtIndex:0]).employeePosition];

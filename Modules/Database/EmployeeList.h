@@ -16,6 +16,7 @@
 	UIImage *image;
 }
 
+// Sets Employee Properties
 @property (nonatomic, assign) NSInteger employeeId;
 @property (nonatomic, retain) NSString *employeeName;
 @property (nonatomic, retain) NSString *employeePosition;

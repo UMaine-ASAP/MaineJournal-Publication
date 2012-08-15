@@ -75,6 +75,8 @@ int articlePos;
 	
 	// Adds the first Article View to the Main View.  This will eventually be decided by which article the users chooses on the main screen.
 	[articlesLayer addSubview:articles[articlePos]];
+
+	NSLog(@"articlePos is %i", articlePos);
 	
 	// Initializes the contentsLayer, which will hold the contents (and other potential items)
 	contentsLayer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -137,8 +139,10 @@ int articlePos;
 		articlePos = 0;
 	}
 	
-	[articlesLayer addSubview:articles[articlePos]];
+	NSLog(@"articlePos is %i", articlePos);
 	
+	[articlesLayer addSubview:articles[articlePos]];
+/**
 	// Create animation block
     void (^completion)(void) = ^{
         [UIView animateWithDuration:0.5
@@ -178,6 +182,7 @@ int articlePos;
 					 completion:^(BOOL finished) {
 						 completion();
 					 }];
+ **/
 }
 
 -(void)previousView {
@@ -187,8 +192,11 @@ int articlePos;
 	else{
 		articlePos = 11;
 	}
-	[articlesLayer addSubview:articles[articlePos]];
 	
+		NSLog(@"articlePos is %i", articlePos);
+	
+	[articlesLayer addSubview:articles[articlePos]];
+/**
 	// Create animation block
     void (^completion)(void) = ^{
         [UIView animateWithDuration:0.5
@@ -228,6 +236,7 @@ int articlePos;
 					 completion:^(BOOL finished) {
 						 completion();
 					 }];
+**/
 }
 
 //The method that designates the target of the button.  This will be deleted/modified once the views are set up.

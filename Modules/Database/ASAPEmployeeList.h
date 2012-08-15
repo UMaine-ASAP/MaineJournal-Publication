@@ -15,7 +15,7 @@
 	sqlite3 *db;
 }
 
-// Declare and array of employees
+// Declare an array of employees
 - (NSMutableArray *) getEmployees;
 
 @end
