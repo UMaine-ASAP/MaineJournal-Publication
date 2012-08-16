@@ -13,13 +13,18 @@
 
 @interface image_swipeViewController : UIViewController{
     
-    NSTimer *Main;
+    NSTimer *Timer;
     NSMutableArray *gallery;
     NSMutableArray *ImageViews;
     NSMutableArray *subtitles;
     
-    CGPoint WidthHeight;
+    int xVel;
     CGPoint touchPos;
+    CGPoint temptouchPos;
+    Boolean moving;
+    
+    CGPoint WidthHeight;
+    CGPoint touchPosSub;
     
     UIImage *image;
     

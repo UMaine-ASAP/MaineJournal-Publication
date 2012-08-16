@@ -16,5 +16,5 @@
     int PictureHeight;
 }
 
-- (CGRect)getSize:(CGPoint)WidthHeight:(int)width:(int)height;
+- (CGRect)getSize:(CGPoint)WidthHeight:(int)width:(int)height:(int)start;
 @end

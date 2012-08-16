@@ -17,8 +17,12 @@
 - (void)viewDidLoad{
     
     // setups up the positions
+    touchPosSub = CGPointMake(0.0, 0.0);
+    WidthHeight = CGPointMake(768,860);
     touchPos = CGPointMake(0.0, 0.0);
-    WidthHeight = CGPointMake(768,680);
+    temptouchPos = CGPointMake(0.0, 0.0);
+    xVel = 0;
+    moving = FALSE;
     [super viewDidLoad];
     
     /*if ((self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft)){
@@ -63,29 +67,85 @@
     [images instantiate:gallery:WidthHeight];
     [images drawOnView:self.view];
     
+    Timer = [NSTimer scheduledTimerWithTimeInterval:(0.03) target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
     
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(startMovingLeft)];
+    swipeLeft.numberOfTouchesRequired = 1;
+    swipeLeft.direction=UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
     
+    //UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(startMovingRight)];
+    //swipeLeft.numberOfTouchesRequired = 1;
+    //swipeLeft.direction=UISwipeGestureRecognizerDirectionRight;
+    //[self.view addGestureRecognizer:swipeRight];
+    
+}
+
+- (void) onTimer{
+    if (moving == TRUE){
+        moving = [main Move];
+    }
 }
 
 // detects the touches on the sub display
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *myTouch = [[event allTouches] anyObject];
-    touchPos = [myTouch locationInView:self.view];
+    touchPosSub = [myTouch locationInView:self.view];
     NSMutableArray *temp = [images getArray];
-    for (int i = 0; i<temp.count; i++) {
-        holder = [temp objectAtIndex:i];
-        [holder drawSmall:self.view];
-        if ([holder inBox:touchPos.x :touchPos.y]){
-            [main changeImage:[holder getPicture]];
-            descriptiion.text = [subtitles objectAtIndex:i];
-            [holder drawBig:self.view];
+    if (moving == FALSE){
+        for (int i = 0; i<temp.count; i++) {
+            holder = [temp objectAtIndex:i];
+            [holder drawSmall:self.view];
+            if ([holder inBox:touchPosSub.x :touchPosSub.y]){
+                [main changeImage:[holder getPicture]:i];
+                descriptiion.text = [subtitles objectAtIndex:i];
+                [holder drawBig:self.view];
+            }
         }
+    }
+}
+
+- (void) startMovingLeft{
+    if (moving == FALSE){
+        moving = TRUE;
+        
+        int tempIndex = [main getIndex];
+        if (tempIndex == (gallery.count-1))
+            tempIndex = 0;
+        else
+            tempIndex = (tempIndex+1);
+
+        xVel = -30;
+        [main SwipeMoveSetup:[gallery objectAtIndex:tempIndex] :xVel :self.view:tempIndex :FALSE];
+        descriptiion.text = [subtitles objectAtIndex:tempIndex];
+        NSMutableArray *temp = [images getArray];
+        subImage *tempSub = [temp objectAtIndex:tempIndex]; 
+        [tempSub drawBig:self.view];
+    }
+}
+
+- (void) startMovingRight{
+    if (moving == FALSE){
+        moving = TRUE;
+        
+        int tempIndex = [main getIndex];
+        if (tempIndex == 0)
+            tempIndex = (gallery.count-1);
+        else
+            tempIndex = (tempIndex-1);
+        
+        xVel = 30;
+        [main SwipeMoveSetup:[gallery objectAtIndex:tempIndex] :xVel :self.view:tempIndex :TRUE];
+        descriptiion.text = [subtitles objectAtIndex:tempIndex];
+        NSMutableArray *temp = [images getArray];
+        subImage *tempSub = [temp objectAtIndex:tempIndex]; 
+        [tempSub drawBig:self.view];
     }
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
     WidthHeight = CGPointMake(768,1004);
-    [main SetForRotate:WidthHeight];
+    [main ReShape:WidthHeight];
     [main drawOnScreen:self.view];
 }
 

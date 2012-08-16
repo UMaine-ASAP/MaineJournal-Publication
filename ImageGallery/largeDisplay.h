@@ -12,13 +12,20 @@
 @interface largeDisplay : NSObject
 {
     IBOutlet UIImageView *main;
+    IBOutlet UIImageView *temp;
     UIImage *picture;
     CGPoint widthHeight;
     imageMover *shaper;
+    float Xvel;
+    float xAccel;
+    int imageIndex;
 }
 - (void) instantiate:(UIImage *)pic:(CGPoint)WidthHeight;
 - (void) drawOnScreen:(UIView *)view;
-- (void) changeImage:(UIImage *)pic;
-- (void) SetForRotate:(CGPoint)WidthHeight;
+- (void) changeImage:(UIImage *)pic:(int)index;
+- (void) ReShape:(CGPoint)WidthHeight;
+- (void) SwipeMoveSetup:(UIImage *)nextpic:(int)xVel:(UIView *)view:(int)index:(Boolean)right;
+- (Boolean) Move;
+- (int) getIndex;
 
 @end

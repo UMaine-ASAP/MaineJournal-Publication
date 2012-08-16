@@ -16,8 +16,8 @@
     widthHeight = WidthHeight;
     
     // these varibles can be changed really easily to adjust the way the page is setup
-    NumAcross = 3;
-    picSize = 60;
+    NumAcross = 8;
+    picSize = 40;
     
     gallerySub = [[NSMutableArray alloc]init];
     for (int i=0; i<pictures.count; i++) {
