@@ -10,10 +10,20 @@
 // Need to import the classes that defined and filled the array with data
 #import "File.h"
 #import "FileList.h"
+#import "MediaPlayer/MediaPlayer.h"
+#import "AVFoundation/AVFoundation.h"
 
 @implementation ViewController
 
 @synthesize files;
+
+File *aFile;
+NSURL *videoURL;
+NSURL *audioURL;
+UIImageView *imgView;
+MPMoviePlayerController *player;
+AVAudioPlayer *audio;
+NSError *error;
 
 - (void)viewDidLoad
 {
@@ -21,24 +31,91 @@
 	// Initialize the list of employees
 	FileList *fileList = [[FileList alloc]init];
 	
-	//Grabs the data in the table
+	// Grabs the data in the table
 	self.files = [fileList getFiles];
+	
+	// Make the Article Title
+	aFile = (File *) [self.files objectAtIndex:0];
+	UILabel *projectName = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 400, 40)];
+	projectName.text = aFile.project;
+	projectName.textColor = [UIColor blackColor];
+	[self.view addSubview:projectName];
+	
+	UILabel *authorName = [[UILabel alloc] initWithFrame:CGRectMake(25, 40, 400, 40)];
+	authorName.text = aFile.author;
+	authorName.textColor = [UIColor blackColor];
+	[self.view addSubview:authorName];
 	
 	for (int i =0; i < [self.files count]; i++)
 	{
-		File *aFile = (File *) [self.files objectAtIndex:i];
-		// This is where the system could determine which viewer to use
-		// ex.  if (aFile.type == "png" OR "image")
-		// Initialize a UIImageView
+		aFile = (File *) [self.files objectAtIndex:i];
 		
-		// As an example, this creates a UIView based on the parameters from the database
-		UIView *square = [[UIView alloc] initWithFrame:CGRectMake(aFile.xPos, aFile.yPos, aFile.width, aFile.height)];
-		square.backgroundColor = [self getRandomColor];
-		[self.view addSubview:square];
+		// Check to see if file is in layout
+		if (aFile.isInLayout == 1) {
+			CGRect rect = CGRectMake(aFile.xPos, aFile.yPos, aFile.width, aFile.height);
+		
+			UIView *square = [[UIView alloc] initWithFrame:rect];
+			UILabel *typeLabel = [[UILabel alloc] initWithFrame:rect];
+			videoURL = [[NSBundle mainBundle] URLForResource:@"video_1" withExtension:@"mp4"];
+			audioURL = [[NSBundle mainBundle] URLForResource:@"GuitarChords2" withExtension:@"mp3"];
+		
+			// This is where the system could determine which viewer to use
+			switch (aFile.type) {
+				case 0:
+					// 0 = Image
+					imgView = [[UIImageView alloc] initWithFrame:rect];
+					imgView.image = [UIImage imageNamed:@"LoaM_Icon.png"];
+					[self.view addSubview:imgView];
+					break;
+				case 1:
+					// 1 = Video
+					player = [[MPMoviePlayerController alloc] initWithContentURL: videoURL]; // This will be the URL w/ the file name
+					[player prepareToPlay];
+					[player.view setFrame: rect];  // Player's frame must match parent's
+					[self.view addSubview: player.view];
+					player.shouldAutoplay = NO;
+					break;
+				case 2:
+					// 2 = Text
+					// Pip's Document Viewer will get called here, most likely
+					square.backgroundColor = [self getRandomColor];
+					[self.view addSubview:square];
+					typeLabel = [[UILabel alloc] initWithFrame:rect];
+					typeLabel.text = (@"Text");
+					typeLabel.backgroundColor = [UIColor clearColor];
+					typeLabel.textAlignment = UITextAlignmentCenter;
+					[self.view addSubview:typeLabel];
+					break;
+				case 3:
+					// 3 = Audio works, it just autoplays now because it has no controls.
+					// I'll make a rough Audio Player at some point
+					/**
+					 audio = [[AVAudioPlayer alloc] initWithContentsOfURL:audioURL error:&error];
+					 audio.numberOfLoops = -1;
+					 
+					 if (audio == nil)
+						NSLog([error description]);
+					 else
+						[audio play];
+					 **/
+				default:
+					break;
+			}
+		}
+		else {
+			NSLog(@"Not part of layout");
+		}
 	}
 	
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)dealloc {
+	imgView = nil;
+	audio = nil;
+	aFile = nil;
+	[super dealloc];
 }
 
 // Creates a Random Color.  Currently used to color the article buttons.

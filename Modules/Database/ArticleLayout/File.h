@@ -14,6 +14,10 @@
 	NSInteger yPos;
 	NSInteger width;
 	NSInteger height;
+	NSInteger type;
+	NSString *project;
+	NSString *author;
+	NSInteger isInLayout; // Temporarily an integer (0=False, 1=True) until I can figure out how to reference booleans from a SQLite DB
 }
 
 // Sets File Properties
@@ -21,5 +25,9 @@
 @property (nonatomic, assign) NSInteger yPos;
 @property (nonatomic, assign) NSInteger width;
 @property (nonatomic, assign) NSInteger height;
+@property (nonatomic, assign) NSInteger	type;
+@property (nonatomic, retain) NSString *project;
+@property (nonatomic, retain) NSString *author;
+@property (nonatomic, assign) NSInteger isInLayout;
 
 @end

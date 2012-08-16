@@ -19,6 +19,13 @@
 		8421571715DBE8C3004DAD58 /* ArticleFiles.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8421571615DBE8C3004DAD58 /* ArticleFiles.sqlite */; };
 		8421571B15DBE936004DAD58 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421571A15DBE936004DAD58 /* File.m */; };
 		8421571E15DBEADF004DAD58 /* FileList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8421571D15DBEADF004DAD58 /* FileList.m */; };
+		849A2CBA15DD390E008BA53C /* GuitarChords2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849A2CB915DD390E008BA53C /* GuitarChords2.mp3 */; };
+		84A7948615DC31B400B193E3 /* LoaM_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A7948515DC31B400B193E3 /* LoaM_Icon.png */; };
+		84A7948815DC345A00B193E3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A7948715DC345A00B193E3 /* MediaPlayer.framework */; };
+		84A7948E15DC34B400B193E3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A7948D15DC34B400B193E3 /* QuartzCore.framework */; };
+		84A7949015DC34BD00B193E3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A7948F15DC34BD00B193E3 /* CoreMedia.framework */; };
+		84A7949915DC374100B193E3 /* video_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84A7949815DC374100B193E3 /* video_1.mp4 */; };
+		84A7949B15DC3EFF00B193E3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A7949A15DC3EFF00B193E3 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +48,13 @@
 		8421571A15DBE936004DAD58 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = SOURCE_ROOT; };
 		8421571C15DBEADF004DAD58 /* FileList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileList.h; sourceTree = SOURCE_ROOT; };
 		8421571D15DBEADF004DAD58 /* FileList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileList.m; sourceTree = SOURCE_ROOT; };
+		849A2CB915DD390E008BA53C /* GuitarChords2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = GuitarChords2.mp3; path = "../../../../../../../Applications/Scratch 1.4/Media/Sounds/Music Loops/GuitarChords2.mp3"; sourceTree = "<group>"; };
+		84A7948515DC31B400B193E3 /* LoaM_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoaM_Icon.png; path = "../../../../../Desktop/Foster Summer 2012/Wiki Icons/LoaM_Icon.png"; sourceTree = "<group>"; };
+		84A7948715DC345A00B193E3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		84A7948D15DC34B400B193E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		84A7948F15DC34BD00B193E3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		84A7949815DC374100B193E3 /* video_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = video_1.mp4; path = "../../../../../Desktop/Foster Summer 2012/Hockey/MyVideoPlayer/video_1.mp4"; sourceTree = "<group>"; };
+		84A7949A15DC3EFF00B193E3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +62,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A7949B15DC3EFF00B193E3 /* AVFoundation.framework in Frameworks */,
+				84A7949015DC34BD00B193E3 /* CoreMedia.framework in Frameworks */,
+				84A7948E15DC34B400B193E3 /* QuartzCore.framework in Frameworks */,
+				84A7948815DC345A00B193E3 /* MediaPlayer.framework in Frameworks */,
 				8421571515DBE8A3004DAD58 /* libsqlite3.0.dylib in Frameworks */,
 				842156F815DBE893004DAD58 /* UIKit.framework in Frameworks */,
 				842156FA15DBE893004DAD58 /* Foundation.framework in Frameworks */,
@@ -79,6 +97,10 @@
 		842156F615DBE893004DAD58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84A7949A15DC3EFF00B193E3 /* AVFoundation.framework */,
+				84A7948F15DC34BD00B193E3 /* CoreMedia.framework */,
+				84A7948D15DC34B400B193E3 /* QuartzCore.framework */,
+				84A7948715DC345A00B193E3 /* MediaPlayer.framework */,
 				842156F715DBE893004DAD58 /* UIKit.framework */,
 				842156F915DBE893004DAD58 /* Foundation.framework */,
 				842156FB15DBE893004DAD58 /* CoreGraphics.framework */,
@@ -104,6 +126,9 @@
 		842156FE15DBE893004DAD58 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				849A2CB915DD390E008BA53C /* GuitarChords2.mp3 */,
+				84A7949815DC374100B193E3 /* video_1.mp4 */,
+				84A7948515DC31B400B193E3 /* LoaM_Icon.png */,
 				842156FF15DBE893004DAD58 /* ArticleLayout-Info.plist */,
 				8421570015DBE893004DAD58 /* InfoPlist.strings */,
 				8421570315DBE893004DAD58 /* main.m */,
@@ -177,6 +202,9 @@
 				8421570215DBE893004DAD58 /* InfoPlist.strings in Resources */,
 				8421570B15DBE893004DAD58 /* MainStoryboard.storyboard in Resources */,
 				8421571715DBE8C3004DAD58 /* ArticleFiles.sqlite in Resources */,
+				84A7948615DC31B400B193E3 /* LoaM_Icon.png in Resources */,
+				84A7949915DC374100B193E3 /* video_1.mp4 in Resources */,
+				849A2CBA15DD390E008BA53C /* GuitarChords2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +335,7 @@
 				8421571315DBE893004DAD58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

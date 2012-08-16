@@ -15,5 +15,9 @@
 @synthesize yPos;
 @synthesize width;
 @synthesize height;
+@synthesize type;
+@synthesize project;
+@synthesize author;
+@synthesize isInLayout;
 
 @end

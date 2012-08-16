@@ -34,7 +34,7 @@
 		}
 		
 		// Setup a statement to pull data from the database
-		const char *sql = "SELECT xPos, yPos, width, height FROM Files";
+		const char *sql = "SELECT * FROM Files";
 		sqlite3_stmt *sqlStatement;
 		
 		// If there's an issue with that statement...
@@ -52,6 +52,10 @@
 			fileList.yPos = sqlite3_column_int(sqlStatement, 1);
 			fileList.width = sqlite3_column_int(sqlStatement, 2);
 			fileList.height = sqlite3_column_int(sqlStatement, 3);
+			fileList.type = sqlite3_column_int(sqlStatement, 4);
+			fileList.project = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 5)];
+			fileList.author = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 6)];
+			fileList.isInLayout = sqlite3_column_int(sqlStatement, 7);
 			[fileArray addObject:fileList];
 		}
 	}
