@@ -16,13 +16,16 @@
 @implementation ViewController
 
 @synthesize files;
+@synthesize aFile;
+@synthesize imgView;
+@synthesize player;
+@synthesize audio;
+@synthesize projectName;
+@synthesize authorName;
 
-File *aFile;
+// URL's used for audio and video location
 NSURL *videoURL;
 NSURL *audioURL;
-UIImageView *imgView;
-MPMoviePlayerController *player;
-AVAudioPlayer *audio;
 NSError *error;
 
 - (void)viewDidLoad
@@ -36,12 +39,13 @@ NSError *error;
 	
 	// Make the Article Title
 	aFile = (File *) [self.files objectAtIndex:0];
-	UILabel *projectName = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 400, 40)];
+	
+	projectName = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, 400, 40)];
 	projectName.text = aFile.project;
-	projectName.textColor = [UIColor blackColor];
+	projectName.textColor = [UIColor blackColor]; 
 	[self.view addSubview:projectName];
 	
-	UILabel *authorName = [[UILabel alloc] initWithFrame:CGRectMake(25, 40, 400, 40)];
+	authorName = [[UILabel alloc] initWithFrame:CGRectMake(25, 40, 400, 40)];
 	authorName.text = aFile.author;
 	authorName.textColor = [UIColor blackColor];
 	[self.view addSubview:authorName];
