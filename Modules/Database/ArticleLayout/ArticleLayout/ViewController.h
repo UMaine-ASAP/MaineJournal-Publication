@@ -21,6 +21,9 @@
 	AVAudioPlayer *audio;
 	UILabel *projectName;
 	UILabel *authorName;
+	
+	UIButton *playButton;
+	UIButton *pauseButton;
 }
 
 // Define dem properties (everything besides NSMutableArray is obvious from the MainStoryboard
@@ -31,5 +34,9 @@
 @property (nonatomic, retain) AVAudioPlayer *audio;
 @property (nonatomic, retain) UILabel *projectName;
 @property (nonatomic, retain) UILabel *authorName;
+
+@property (nonatomic, retain) UIButton *playButton;
+@property (nonatomic, retain)  UIButton *pauseButton;
+
 
 @end

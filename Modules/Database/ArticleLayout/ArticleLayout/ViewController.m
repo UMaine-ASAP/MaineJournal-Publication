@@ -23,6 +23,9 @@
 @synthesize projectName;
 @synthesize authorName;
 
+@synthesize playButton;
+@synthesize pauseButton;
+
 // URL's used for audio and video location
 NSURL *videoURL;
 NSURL *audioURL;
@@ -58,9 +61,10 @@ NSError *error;
 		if (aFile.isInLayout == 1) {
 			CGRect rect = CGRectMake(aFile.xPos, aFile.yPos, aFile.width, aFile.height);
 		
-			UIView *square = [[UIView alloc] initWithFrame:rect];
+			// These are all temporary things
+			UIView *square = [[UIView alloc] initWithFrame:rect]; // Used along with typeLabel as a placeholder for a text viewer
 			UILabel *typeLabel = [[UILabel alloc] initWithFrame:rect];
-			videoURL = [[NSBundle mainBundle] URLForResource:@"video_1" withExtension:@"mp4"];
+			videoURL = [[NSBundle mainBundle] URLForResource:@"video_1" withExtension:@"mp4"];  // These things will be replaced with the location of the user's file
 			audioURL = [[NSBundle mainBundle] URLForResource:@"GuitarChords2" withExtension:@"mp3"];
 		
 			// This is where the system could determine which viewer to use
@@ -91,17 +95,22 @@ NSError *error;
 					[self.view addSubview:typeLabel];
 					break;
 				case 3:
-					// 3 = Audio works, it just autoplays now because it has no controls.
-					// I'll make a rough Audio Player at some point
-					/**
+					// 3 = Audio
 					 audio = [[AVAudioPlayer alloc] initWithContentsOfURL:audioURL error:&error];
-					 audio.numberOfLoops = -1;
+					
+					playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+					[playButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchDown];
+					[playButton setTitle:@"Play" forState:UIControlStateNormal];
+					playButton.frame = CGRectMake(self.view.frame.size.height/2, self.view.frame.size.width/2, 100, 100);
+					[self.view addSubview:playButton];
+					
+					pauseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+					[pauseButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchDown];
+					[pauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+					pauseButton.frame = CGRectMake(self.view.frame.size.height/2 + 75, self.view.frame.size.width/2, 100, 100);
+					[self.view addSubview:pauseButton];
+					break;
 					 
-					 if (audio == nil)
-						NSLog([error description]);
-					 else
-						[audio play];
-					 **/
 				default:
 					break;
 			}
@@ -113,6 +122,14 @@ NSError *error;
 	
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)play {
+	[self.audio play];
+}
+
+-(void)pause {
+	[self.audio stop];
 }
 
 - (void)dealloc {
